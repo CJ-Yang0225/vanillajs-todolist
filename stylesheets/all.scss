@@ -14,11 +14,16 @@ body {
 .navbar {
   background: #4a90e2;
   height: 4.75rem;
-  margin: auto;
 }
 
-.nav-item {
-  display: inline-flex;
+.nav-items {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+
+  .nav-item {
+    display: flex;
+  }
 
   a {
     color: $darken-primary;

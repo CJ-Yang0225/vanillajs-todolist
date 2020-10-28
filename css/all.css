@@ -12,16 +12,24 @@ body {
 .navbar {
   background: #4a90e2;
   height: 4.75rem;
-  margin: auto;
 }
 
-.nav-item {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+.nav-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.nav-item a {
+.nav-items .nav-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav-items a {
   color: #00408b;
   font-size: 24px;
   text-decoration: none;
@@ -29,11 +37,11 @@ body {
   font-weight: 700;
 }
 
-.nav-item a:hover {
+.nav-items a:hover {
   color: white;
 }
 
-.nav-item a.active {
+.nav-items a.active {
   -webkit-box-shadow: 0 -5px 0 0 #00408b inset;
           box-shadow: 0 -5px 0 0 #00408b inset;
   color: white;
