@@ -3,6 +3,7 @@ $darken-primary: #00408b;
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -13,42 +14,44 @@ body {
 
 .navbar {
   background: #4a90e2;
-  height: 4.75rem;
-}
 
-.nav-items {
-  display: flex;
-  list-style: none;
-  justify-content: space-around;
+  .nav-items {
+    display: flex;
+    list-style: none;
+    // justify-content: space-between;
+
+    a {
+      color: $darken-primary;
+      width: 100%;
+      font-size: 24px;
+      text-decoration: none;
+      padding: 18px 0;
+      font-weight: 700;
+
+      &:hover {
+        color: white;
+      }
+
+      &.active {
+        // border-bottom: 5px solid $darken-primary;
+        box-shadow: 0 -5px 0 0 $darken-primary inset;
+        color: white;
+      }
+    }
+  }
 
   .nav-item {
     display: flex;
-  }
-
-  a {
-    color: $darken-primary;
-    font-size: 24px;
-    text-decoration: none;
-    padding: 18px 0;
-    font-weight: 700;
-
-    &:hover {
-      color: white;
-    }
-
-    &.active {
-      // border-bottom: 5px solid $darken-primary;
-      box-shadow: 0 -5px 0 0 $darken-primary inset;
-      color: white;
-    }
+    // justify-content: center;
+    width: 100%;
   }
 }
 
 .container {
   text-align: center;
   width: 100%;
-  max-width: 650px;
-  margin: auto;
+  max-width: 620px;
+  margin: 0 auto;
   padding: 0 15px;
 }
 
@@ -73,6 +76,38 @@ body {
   }
 }
 
+.add_task-expansion {
+  font-size: 1.1rem;
+  display: block;
+
+  .expansion-body {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1.5rem 4.5rem;
+    border: 2px solid #c8c8c8;
+    border-top: 0;
+    background-color: #ffffff;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+  }
+
+  .input {
+    border: 1px solid #c8c8c8;
+    border-radius: 5px;
+
+    &::-webkit-calendar-picker-indicator {
+      outline: none;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
 input {
   width: inherit;
   font: inherit;
@@ -80,6 +115,7 @@ input {
 
 .add_task-label {
   position: absolute;
+  line-height: 1;
   left: 2rem;
   top: 1.2rem;
   color: #c8c8c8;
@@ -87,6 +123,8 @@ input {
 
 .icon {
   font-size: inherit;
+  padding: 0;
+  outline: none;
 }
 
 .btn {
@@ -95,8 +133,25 @@ input {
 
 .btn_more {
   position: absolute;
+  border: none;
   right: 2rem;
   top: 1.2rem;
+  height: 2rem;
+  width: 2rem;
   background-color: inherit;
-  border: none;
+
+  &:hover {
+    border-radius: 50%;
+    background-color: #c8c8c8c8;
+    cursor: pointer;
+  }
+
+  &.is_expanded {
+    border-radius: 50%;
+    color: #4a90e2c8;
+  }
+}
+
+#file_null {
+  display: none;
 }

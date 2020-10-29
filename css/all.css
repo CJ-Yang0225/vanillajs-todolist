@@ -1,6 +1,8 @@
 * {
   padding: 0;
   margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -11,47 +13,46 @@ body {
 
 .navbar {
   background: #4a90e2;
-  height: 4.75rem;
 }
 
-.nav-items {
+.navbar .nav-items {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   list-style: none;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
 }
 
-.nav-items .nav-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.nav-items a {
+.navbar .nav-items a {
   color: #00408b;
+  width: 100%;
   font-size: 24px;
   text-decoration: none;
   padding: 18px 0;
   font-weight: 700;
 }
 
-.nav-items a:hover {
+.navbar .nav-items a:hover {
   color: white;
 }
 
-.nav-items a.active {
+.navbar .nav-items a.active {
   -webkit-box-shadow: 0 -5px 0 0 #00408b inset;
           box-shadow: 0 -5px 0 0 #00408b inset;
   color: white;
 }
 
+.navbar .nav-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
 .container {
   text-align: center;
   width: 100%;
-  max-width: 650px;
-  margin: auto;
+  max-width: 620px;
+  margin: 0 auto;
   padding: 0 15px;
 }
 
@@ -76,6 +77,47 @@ body {
   border-radius: inherit;
 }
 
+.add_task-expansion {
+  font-size: 1.1rem;
+  display: block;
+}
+
+.add_task-expansion .expansion-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 1.5rem 4.5rem;
+  border: 2px solid #c8c8c8;
+  border-top: 0;
+  background-color: #ffffff;
+}
+
+.add_task-expansion label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 8px;
+}
+
+.add_task-expansion .input {
+  border: 1px solid #c8c8c8;
+  border-radius: 5px;
+}
+
+.add_task-expansion .input::-webkit-calendar-picker-indicator {
+  outline: none;
+}
+
+.add_task-expansion .input::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
+}
+
 input {
   width: inherit;
   font: inherit;
@@ -83,6 +125,7 @@ input {
 
 .add_task-label {
   position: absolute;
+  line-height: 1;
   left: 2rem;
   top: 1.2rem;
   color: #c8c8c8;
@@ -90,6 +133,8 @@ input {
 
 .icon {
   font-size: inherit;
+  padding: 0;
+  outline: none;
 }
 
 .btn {
@@ -98,9 +143,26 @@ input {
 
 .btn_more {
   position: absolute;
+  border: none;
   right: 2rem;
   top: 1.2rem;
+  height: 2rem;
+  width: 2rem;
   background-color: inherit;
-  border: none;
+}
+
+.btn_more:hover {
+  border-radius: 50%;
+  background-color: #c8c8c8c8;
+  cursor: pointer;
+}
+
+.btn_more.is_expanded {
+  border-radius: 50%;
+  color: #4a90e2c8;
+}
+
+#file_null {
+  display: none;
 }
 /*# sourceMappingURL=all.css.map */

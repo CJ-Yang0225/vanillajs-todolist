@@ -13,30 +13,47 @@
   </head>
   <body>
     <header class="navbar">
-      <ul class="nav-items">
-        <li class="nav-item">
-          <a href="" class="nav-item-link">My Tasks</a>
-        </li>
-        <li class="nav-item">
-          <a href="" class="nav-item-link">In Progress</a>
-        </li>
-        <li class="nav-item">
-          <a href="" class="nav-item-link">Completed</a>
-        </li>
+      <div class="container">
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="#" class="nav-item-link">My Tasks</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-item-link">In Progress</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-item-link">Completed</a>
+          </li>
+      </div>
       </ul>
-      <div class="container"></div>
     </header>
     <main class="main container ">
       <div class="add_task">
-        <label class="add_task-label icon">
+        <label class="add_task-label icon" for="add_task-input">
           <i class="fas fa-plus"></i>
         </label>
-        <input type="text" class="input" placeholder="Add Task" required />
+        <input type="text" id="add_task-input" class="input" placeholder="Add Task" required />
         <button class="btn btn_more icon">
           <i class="fas fa-ellipsis-v"></i>
-        </button>
+        </button>        
       </div>
+      <div class="add_task-expansion">
+          <div class="expansion-body">
+            <form action="#">
+              <label for="date-input" class="date-label icon">
+                <i class="far fa-calendar-alt icon"> Deadline</i>
+              </label>
+              <input type="date" name="date" id="date-input" class="input">
+              <input type="time" name="time" id="time-input" class="input">
+              <label><i class="far fa-file icon"> File</i></label>
+              <label for="file_null"><i class="fas fa-plus icon"></i></label>
+              <input type="file" id="file_null">
+            </form>
+          </div>
+          <div class="expansion-footer">
+        </div>
     </main>
     <footer class="author"></footer>
   </body>
+  <script src="js/main.js"></script>
 </html>
