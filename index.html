@@ -38,42 +38,40 @@
         </button>        
       </div>
       <div class="add_task-expansion">
-          <div class="expansion-body">
-            <form action="#">
-              <label for="date-input" class="date-label icon">
-                <i class="far fa-calendar-alt icon"></i>
-                Deadline
-              </label>
-              <div>
-                <input type="date" name="date" id="date-input" class="input">
-                <input type="time" name="time" id="time-input" class="input">
-              </div>
-              <label>
-                <i class="far fa-file icon"></i>
-                File
-              </label>
-              <label for="file_null" class="file-label">
-                <i class="fas fa-plus icon"></i>
-              </label>
-              <input type="file" name="file" id="file_null">
-              <label for="" class="comment-label">
-                <i class="far fa-comment-dots icon mr-s"></i>
-                Comment
-              </label>
-              <textarea name="" id="" cols="30" rows="10"></textarea>
-            </form>
+        <div class="expansion-body">
+          <label for="date-input" class="date-label icon">
+            <i class="far fa-calendar-alt icon"></i>
+            Deadline
+          </label>
+          <div>
+            <input type="date" name="date" id="date-input" class="input">
+            <input type="time" name="time" id="time-input" class="input">
           </div>
-          <div class="expansion-footer">
-              <button class="btn btn-danger">
-                <i class="fas fa-times icon mr-b"></i>
-                Cancel
-              </button>
-              <button class="btn btn-primary">
-                <i class="fas fa-plus icon mr-b"></i>
-                Save
-              </button>
-          </div>
+          <label>
+            <i class="far fa-file icon"></i>
+            File
+          </label>
+          <label for="file_null" class="file-label">
+            <i class="fas fa-plus icon"></i>
+          </label>
+          <input type="file" name="file" id="file_null">
+          <label for="" class="comment-label">
+            <i class="far fa-comment-dots icon mr-s"></i>
+            Comment
+          </label>
+          <textarea name="" id="comment-textarea"></textarea>
         </div>
+        <div class="expansion-footer">
+          <button class="btn btn-danger">
+            <i class="fas fa-times icon mr-b"></i>
+            Cancel
+          </button>
+          <button class="btn btn-primary">
+            <i class="fas fa-plus icon mr-b"></i>
+            Save
+          </button>
+        </div>
+      </div>
     </main>
     <footer class="author"></footer>
   </body>

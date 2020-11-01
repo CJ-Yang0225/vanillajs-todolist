@@ -90,28 +90,17 @@ body {
 }
 
 .add_task-expansion .expansion-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   padding: 1.5rem 4.5rem;
   background-color: #f2f2f2;
-}
-
-.add_task-expansion form {
-  position: relative;
-  width: 100%;
   margin: auto;
   text-align: left;
 }
 
-.add_task-expansion form div {
+.add_task-expansion .expansion-body div {
   margin-left: 2rem;
 }
 
-.add_task-expansion form label {
+.add_task-expansion .expansion-body label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -122,11 +111,11 @@ body {
   line-height: 1;
 }
 
-.add_task-expansion form label i {
+.add_task-expansion .expansion-body label i {
   margin-right: 0.4rem;
 }
 
-.add_task-expansion form .input {
+.add_task-expansion .expansion-body .input {
   padding: 0.3rem 1rem;
   margin-bottom: 1rem;
   border: 0px;
@@ -134,15 +123,15 @@ body {
   outline-color: #b3d4fc;
 }
 
-.add_task-expansion form .input::-webkit-calendar-picker-indicator {
+.add_task-expansion .expansion-body .input::-webkit-calendar-picker-indicator {
   outline: none;
 }
 
-.add_task-expansion form .input::-webkit-calendar-picker-indicator:hover {
+.add_task-expansion .expansion-body .input::-webkit-calendar-picker-indicator:hover {
   cursor: pointer;
 }
 
-.add_task-expansion form textarea {
+.add_task-expansion .expansion-body textarea {
   margin-left: 2rem;
   width: 100%;
   max-width: -webkit-fill-available;
@@ -153,6 +142,7 @@ body {
   border: 0;
   border-radius: 5px;
   outline-color: #b3d4fc;
+  padding: 0.5rem 1rem;
 }
 
 .add_task-expansion.is_expanded {
