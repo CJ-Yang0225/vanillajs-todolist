@@ -112,7 +112,6 @@ body {
 }
 
 .add_task-expansion form label {
-  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -120,6 +119,11 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding: 8px;
+  line-height: 1;
+}
+
+.add_task-expansion form label i {
+  margin-right: 0.4rem;
 }
 
 .add_task-expansion form .input {

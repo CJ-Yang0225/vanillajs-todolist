@@ -105,10 +105,14 @@ body {
     }
 
     label {
-      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       padding: 8px;
+      line-height: 1;
+
+      i {
+        margin-right: 0.4rem;
+      }
     }
 
     .input {
