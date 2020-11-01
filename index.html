@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Todo-List</title>
+    <title>CJ-Todolist</title>
     <link rel="stylesheet" href="css/all.css" />
     <link
       rel="stylesheet"
@@ -43,14 +43,33 @@
               <label for="date-input" class="date-label icon">
                 <i class="far fa-calendar-alt icon"> Deadline</i>
               </label>
-              <input type="date" name="date" id="date-input" class="input">
-              <input type="time" name="time" id="time-input" class="input">
-              <label><i class="far fa-file icon"> File</i></label>
-              <label for="file_null"><i class="fas fa-plus icon"></i></label>
-              <input type="file" id="file_null">
+              <div>
+                <input type="date" name="date" id="date-input" class="input">
+                <input type="time" name="time" id="time-input" class="input">
+              </div>
+              <label>
+                <i class="far fa-file icon"> File</i>
+              </label>
+              <label for="file_null" class="file-label">
+                <i class="fas fa-plus icon"></i>
+              </label>
+              <input type="file" name="file" id="file_null">
+              <label for="" class="comment-label">
+                <i class="far fa-comment-dots icon mr-s"> Comment</i>
+              </label>
+              <textarea name="" id="" cols="30" rows="10"></textarea>
             </form>
           </div>
           <div class="expansion-footer">
+              <button class="btn btn-danger">
+                <i class="fas fa-times icon mr-b"></i>
+                Cancel
+              </button>
+              <button class="btn btn-primary">
+                <i class="fas fa-plus icon mr-b"></i>
+                Save
+              </button>
+          </div>
         </div>
     </main>
     <footer class="author"></footer>

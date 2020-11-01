@@ -9,6 +9,8 @@ body {
   font-family: Helvetica;
   background-color: #e1e1e1;
   line-height: 1.5;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .navbar {
@@ -51,7 +53,7 @@ body {
 .container {
   text-align: center;
   width: 100%;
-  max-width: 620px;
+  max-width: 650px;
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -70,6 +72,7 @@ body {
 }
 
 .add_task .input {
+  width: inherit;
   height: inherit;
   background-color: #ffffff;
   padding: 0 0 0 4.2rem;
@@ -78,8 +81,12 @@ body {
 }
 
 .add_task-expansion {
-  font-size: 1.1rem;
-  display: block;
+  font-size: 1.2rem;
+  height: 0;
+  display: none;
+  border: 2px solid #c8c8c8;
+  border-top: 0;
+  border-radius: 0.31rem;
 }
 
 .add_task-expansion .expansion-body {
@@ -90,12 +97,22 @@ body {
       -ms-flex-pack: start;
           justify-content: flex-start;
   padding: 1.5rem 4.5rem;
-  border: 2px solid #c8c8c8;
-  border-top: 0;
-  background-color: #ffffff;
+  background-color: #f2f2f2;
 }
 
-.add_task-expansion label {
+.add_task-expansion form {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  text-align: left;
+}
+
+.add_task-expansion form div {
+  margin-left: 2rem;
+}
+
+.add_task-expansion form label {
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -105,21 +122,64 @@ body {
   padding: 8px;
 }
 
-.add_task-expansion .input {
-  border: 1px solid #c8c8c8;
+.add_task-expansion form .input {
+  padding: 0.3rem 1rem;
+  margin-bottom: 1rem;
+  border: 0px;
   border-radius: 5px;
+  outline-color: #b3d4fc;
 }
 
-.add_task-expansion .input::-webkit-calendar-picker-indicator {
+.add_task-expansion form .input::-webkit-calendar-picker-indicator {
   outline: none;
 }
 
-.add_task-expansion .input::-webkit-calendar-picker-indicator:hover {
+.add_task-expansion form .input::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
+}
+
+.add_task-expansion form textarea {
+  margin-left: 2rem;
+  width: 100%;
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
+  max-width: fill-available;
+  height: 7.5rem;
+  resize: vertical;
+  border: 0;
+  border-radius: 5px;
+  outline-color: #b3d4fc;
+}
+
+.add_task-expansion.is_expanded {
+  height: 100%;
+  display: block;
+}
+
+.expansion-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.expansion-footer .btn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0;
+  border-style: none;
+  outline-color: #b3d4fc;
+}
+
+.expansion-footer .btn:hover {
   cursor: pointer;
 }
 
 input {
-  width: inherit;
   font: inherit;
 }
 
@@ -129,6 +189,21 @@ input {
   left: 2rem;
   top: 1.2rem;
   color: #c8c8c8;
+}
+
+.file-label {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  background-color: #c8c8c8;
+  color: #ffffff;
+  border-radius: 4px;
+  width: 2rem;
+  height: 2rem;
+}
+
+.file-label:hover {
+  cursor: pointer;
+  background-color: #4a90e2;
 }
 
 .icon {
@@ -160,6 +235,16 @@ input {
 .btn_more.is_expanded {
   border-radius: 50%;
   color: #4a90e2c8;
+}
+
+.btn-danger {
+  color: #d0021b;
+  background-color: #fff;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #4a90e2;
 }
 
 #file_null {
