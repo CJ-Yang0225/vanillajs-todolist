@@ -13,10 +13,10 @@
   </head>
   <body>
     <header class="navbar">
-      <div class="container">
+      <div class="nav-tabs">
         <ul class="nav-items">
           <li class="nav-item">
-            <a href="#" class="nav-item-link">My Tasks</a>
+            <a href="#" class="nav-item-link active">My Tasks</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-item-link">In Progress</a>
@@ -24,18 +24,24 @@
           <li class="nav-item">
             <a href="#" class="nav-item-link">Completed</a>
           </li>
+        </ul>
       </div>
-      </ul>
     </header>
     <main class="main container ">
       <div class="add_task">
         <label class="add_task-label icon" for="add_task-input">
           <i class="fas fa-plus"></i>
         </label>
-        <input type="text" id="add_task-input" class="input" placeholder="Add Task" required />
+        <input
+          type="text"
+          id="add_task-input"
+          class="input"
+          placeholder="Add Task"
+          required
+        />
         <button class="btn btn_more icon">
           <i class="fas fa-ellipsis-v"></i>
-        </button>        
+        </button>
       </div>
       <div class="add_task-expansion">
         <div class="expansion-body">
@@ -44,8 +50,8 @@
             Deadline
           </label>
           <div>
-            <input type="date" name="date" id="date-input" class="input">
-            <input type="time" name="time" id="time-input" class="input">
+            <input type="date" name="date" id="date-input" class="input" />
+            <input type="time" name="time" id="time-input" class="input" />
           </div>
           <label>
             <i class="far fa-file icon"></i>
@@ -54,7 +60,7 @@
           <label for="file_null" class="file-label">
             <i class="fas fa-plus icon"></i>
           </label>
-          <input type="file" name="file" id="file_null">
+          <input type="file" name="file" id="file_null" />
           <label for="" class="comment-label">
             <i class="far fa-comment-dots icon mr-s"></i>
             Comment
@@ -72,6 +78,7 @@
           </button>
         </div>
       </div>
+      <ul class="plates"></ul>
     </main>
     <footer class="author"></footer>
   </body>
