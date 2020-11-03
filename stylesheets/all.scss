@@ -21,17 +21,16 @@ body {
     text-align: center;
     width: 100%;
     max-width: 650px;
-    margin: 0 auto;
+    margin: auto;
   }
 
   .nav-items {
     display: flex;
     list-style: none;
-    // justify-content: space-between;
 
     a {
+      flex: 1;
       color: $darken-primary;
-      width: 100%;
       font-size: 1.5rem;
       text-decoration: none;
       padding: 18px 0;
@@ -206,16 +205,16 @@ input {
 
 .btn {
   display: inline-block;
+  border: none;
+  background-color: inherit;
 }
 
-.btn_more {
+.more_option-btn {
   position: absolute;
-  border: none;
-  right: 2rem;
-  top: 1.2rem;
   height: 2rem;
   width: 2rem;
-  background-color: inherit;
+  right: 2rem;
+  top: 1.2rem;
 
   &:hover {
     border-radius: 50%;
@@ -244,7 +243,7 @@ input {
 }
 
 .plates {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-align: left;
   list-style: none;
 
@@ -264,7 +263,15 @@ input {
   }
 
   button {
+    height: 2.5rem;
+    width: 2.5rem;
     margin-right: 0.5rem;
+
+    &:hover {
+      border-radius: 50%;
+      background-color: #c8c8c8c8;
+      cursor: pointer;
+    }
   }
 
   [type="checkbox"] {

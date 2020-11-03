@@ -1,6 +1,6 @@
 const links = document.querySelectorAll(".nav-item-link");
 
-const moreOption_btn = document.querySelector(".btn_more");
+const moreOption_btn = document.querySelector(".more_option-btn");
 const addTask_expansion = document.querySelector(".add_task-expansion");
 const addTask_input = document.querySelector("[type=text]");
 const date_input = document.querySelector("#date-input");
