@@ -92,11 +92,9 @@ body {
   border-top: 0;
   border-radius: 0.31rem;
   margin-bottom: 0.5rem;
-
   // transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.is_expanded {
-    height: 100%;
     display: block;
   }
 }
@@ -255,36 +253,41 @@ input {
     background-color: #f2f2f2;
     font-weight: 100;
     display: flex;
-  }
-
-  label {
-    flex: 1;
-    cursor: pointer;
-  }
-
-  button {
-    height: 2.5rem;
-    width: 2.5rem;
-    margin-right: 0.5rem;
 
     &:hover {
-      border-radius: 50%;
-      background-color: #c8c8c8c8;
+      box-shadow: 3px 3px 3px 0 #a1a1a1;
+    }
+
+    [type="checkbox"] {
+      display: none;
+    }
+
+    label {
+      flex: 1;
+      font-weight: 700;
       cursor: pointer;
     }
-  }
 
-  [type="checkbox"] {
-    display: none;
-  }
+    input + label:before {
+      content: "⬜️";
+      margin-right: 10px;
+    }
 
-  input + label:before {
-    content: "⬜️";
-    margin-right: 10px;
-  }
+    input:checked + label:before {
+      content: "🌮";
+    }
 
-  .plates input:checked + label:before {
-    content: "🌮";
+    button {
+      height: 2.5rem;
+      width: 2.5rem;
+      margin-right: 0.5rem;
+
+      &:hover {
+        border-radius: 50%;
+        background-color: #c8c8c8c8;
+        cursor: pointer;
+      }
+    }
   }
 
   .card-expansion {

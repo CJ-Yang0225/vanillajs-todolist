@@ -43,7 +43,7 @@ function addItem() {
   items.push({
     title,
     message,
-    completed: false,
+    completed: true,
     favorite: false,
     deadline: "",
     date,
@@ -64,15 +64,16 @@ function clearInput() {
 }
 
 function populateList(data = [], platesList) {
-  platesList.innerHTML += data
+  platesList.innerHTML = data
     .map((value, index) => {
       return `
       <div class="card">
         <li>
           <input type="checkbox" id="item${index}" data-idx="${index}" ${
-        value.done ? "checked" : ""
+        value.completed ? "checked" : ""
       } >
           <label for="item${index}" class="title"">${value.title}</label>
+          <p>${value.message}</p>        
           <button title="Star Favorite" class="btn icon favorite-btn">
             <i class="fa-star icon far"></i>
           </button>
@@ -124,19 +125,28 @@ function populateList(data = [], platesList) {
     `;
     })
     .join("");
+
+  const editBtn_list = document.querySelectorAll(".edit-btn");
+  const card_expansion_list = document.querySelectorAll(".card-expansion");
+
+  editBtn_list.forEach((edit_btn, index) => {
+    edit_btn.addEventListener("click", function() {
+      card_expansion_list[index].classList.toggle("is_expanded");
+    });
+  });
+}
+
+function completedToggle(e) {
+  if (!e.target.matches("input")) return;
+  const el = e.target;
+  const index = el.dataset.idx; // 自定義資料屬性(data-idx)
+  items[index].completed = !items[index].completed;
+  localStorage.setItem("items", JSON.stringify(items));
+  populateList(items, items_list);
 }
 
 cancel_btn.addEventListener("click", clearInput);
 save_btn.addEventListener("click", addItem);
+items_list.addEventListener("click", completedToggle);
 
 populateList(items, items_list);
-
-const editBtn_list = document.querySelectorAll(".edit-btn");
-const card_expansion_list = document.querySelectorAll(".card-expansion");
-
-editBtn_list.forEach((edit_btn, index) => {
-  // console.log(edit_btn, index);
-  edit_btn.addEventListener("click", function() {
-    card_expansion_list[index].classList.toggle("is_expanded");
-  });
-});

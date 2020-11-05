@@ -100,7 +100,6 @@ body {
 }
 
 .add_task-expansion.is_expanded {
-  height: 100%;
   display: block;
 }
 
@@ -274,36 +273,42 @@ input {
   display: flex;
 }
 
-.plates label {
+.plates li:hover {
+  -webkit-box-shadow: 3px 3px 3px 0 #a1a1a1;
+          box-shadow: 3px 3px 3px 0 #a1a1a1;
+}
+
+.plates li [type="checkbox"] {
+  display: none;
+}
+
+.plates li label {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  font-weight: 700;
   cursor: pointer;
 }
 
-.plates button {
+.plates li input + label:before {
+  content: "⬜️";
+  margin-right: 10px;
+}
+
+.plates li input:checked + label:before {
+  content: "🌮";
+}
+
+.plates li button {
   height: 2.5rem;
   width: 2.5rem;
   margin-right: 0.5rem;
 }
 
-.plates button:hover {
+.plates li button:hover {
   border-radius: 50%;
   background-color: #c8c8c8c8;
   cursor: pointer;
-}
-
-.plates [type="checkbox"] {
-  display: none;
-}
-
-.plates input + label:before {
-  content: "⬜️";
-  margin-right: 10px;
-}
-
-.plates .plates input:checked + label:before {
-  content: "🌮";
 }
 
 .plates .card-expansion {
