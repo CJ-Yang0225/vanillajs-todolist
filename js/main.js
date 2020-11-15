@@ -7,7 +7,7 @@ const date_input = document.querySelector("#date-input");
 const time_input = document.querySelector("#time-input");
 const file = document.querySelector("#file_null");
 const fileName = document.querySelector(".file_name");
-const comment_area = document.querySelector("textarea");
+const message_area = document.querySelector("#message-textarea");
 const cancel_btn = document.querySelector(".btn-danger");
 const save_btn = document.querySelector(".btn-primary");
 
@@ -34,9 +34,9 @@ moreOption_btn.addEventListener("click", function() {
 function addItem() {
   const date = date_input.value || "";
   const time = time_input.value || "";
-  const file = file || "";
+  const fileName = file.files[0] ? file.files[0].name : "";
   const title = addTask_input.value;
-  const message = comment_area.value || "";
+  const message = message_area.value || "";
 
   // fileName.innerHTML = file.files[0].name;
 
@@ -48,8 +48,8 @@ function addItem() {
   items.push({
     title,
     message,
-    file,
-    completed: true,
+    fileName,
+    completed: false,
     favorite: false,
     deadline: "",
     date,
@@ -63,33 +63,37 @@ function addItem() {
 
 function updateItem(indexOfCard) {
   const dateInput = document.querySelector(
-    ".card-expansion [name='name=date']"
+    `#task${indexOfCard} + .card-expansion [name='date']`
   );
   const timeInput = document.querySelector(
-    ".card-expansion [name='name=time']"
+    `#task${indexOfCard} + .card-expansion [name='time']`
   );
-  const fileInput = document.querySelector("[type='file']");
+  const fileInput = document.querySelector(
+    `#task${indexOfCard} + .card-expansion [type='file']`
+  );
+  const messageArea = document.querySelector(
+    `#task${indexOfCard} + .card-expansion textarea`
+  );
 
-  const date = dateInput.value;
-  const time = timeInput.value;
-  const file = fileInput.files;
+  const date = dateInput.value || items[indexOfCard]["date"];
+  const time = timeInput.value || items[indexOfCard]["time"];
+  const fileName = fileInput.value || items[indexOfCard]["fileName"];
+  const message = messageArea.value || items[indexOfCard]["message"];
 
-  items.push({
-    file,
-    date,
-    time
-  });
+  items[indexOfCard]["date"] = date;
+  items[indexOfCard]["time"] = time;
+  items[indexOfCard]["fileName"] = fileName;
+  items[indexOfCard]["message"] = message;
+
   localStorage.setItem("items", JSON.stringify(items)); // 字串化傳入Local Storage
-  clearInput();
   populateList(items, items_list);
 }
 
 function clearInput() {
   date_input.value = "";
   time_input.value = "";
-  file.files = "";
   addTask_input.value = "";
-  comment_area.value = "";
+  message_area.value = "";
   addTask_expansion.classList.remove("is_expanded");
 }
 
@@ -97,7 +101,7 @@ function populateList(data = [], platesList) {
   platesList.innerHTML = data
     .map((value, index) => {
       return `
-      <div class="card">
+      <div class="card" id="task${index}">
         <li>
           <input type="checkbox" id="item${index}" data-idx="${index}" ${
         value.completed ? "checked" : ""
@@ -136,11 +140,11 @@ function populateList(data = [], platesList) {
             <i class="fas fa-plus icon"></i>
           </label>
           <input type="file" name="file">
-          <label for="" class="comment-label">
-            <i class="far fa-comment-dots icon mr-s"></i>
-            Comment
+          <label for="" class="message-label">
+            <i class="far fa-message-dots icon mr-s"></i>
+            message
           </label>
-          <textarea name="" id="comment-textarea"></textarea>
+          <textarea name="message"></textarea>
         </div>
         <div class="expansion-footer">
           <button class="btn btn-danger">
@@ -159,9 +163,6 @@ function populateList(data = [], platesList) {
 
   const editBtn_list = document.querySelectorAll(".edit-btn");
   const card_expansion_list = document.querySelectorAll(".card-expansion");
-  const updateBtn_list = document.querySelectorAll(
-    ".expansion-footer .btn-primary"
-  );
 
   editBtn_list.forEach((editBtn, index) => {
     editBtn.addEventListener("click", function() {
@@ -169,29 +170,24 @@ function populateList(data = [], platesList) {
     });
   });
 
+  const updateBtn_list = document.querySelectorAll(
+    ".card-expansion .btn-primary"
+  );
+
   updateBtn_list.forEach((updateBtn, index) =>
-    updateBtn.addEventListener("click", updateItem(index))
+    updateBtn.addEventListener("click", () => updateItem(index))
   );
 }
 
 function completedToggle(e) {
-  if (!e.target.matches("input")) return;
+  if (!e.target.matches("input[type='checkbox']")) return;
   const el = e.target;
   const index = el.dataset.idx; // 自定義資料屬性(data-idx)
   items[index].completed = !items[index].completed;
+  // el.checked = items[index].completed;
   localStorage.setItem("items", JSON.stringify(items));
   populateList(items, items_list);
 }
-
-function _uuid() {
-  return "xxxxxx".replace(/[xy]/g, function(c) {
-    var r = (Math.random() * 16) | 0,
-      v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}
-
-var uuid = _uuid();
 
 cancel_btn.addEventListener("click", clearInput);
 save_btn.addEventListener("click", addItem);

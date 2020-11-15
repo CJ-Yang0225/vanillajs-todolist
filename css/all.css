@@ -297,8 +297,9 @@ input {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin: auto;
+  padding: auto;
   text-align: center;
 }
 
@@ -344,5 +345,7 @@ input {
   display: block;
   -webkit-box-shadow: 0;
           box-shadow: 0;
+  -webkit-box-shadow: 3px 3px 3px 0 #a1a1a1;
+          box-shadow: 3px 3px 3px 0 #a1a1a1;
 }
 /*# sourceMappingURL=all.css.map */
