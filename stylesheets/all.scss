@@ -135,6 +135,10 @@ body {
     }
   }
 
+  [name="file"] {
+    display: none;
+  }
+
   textarea {
     margin-left: 2rem;
     width: 100%;
@@ -236,10 +240,6 @@ input {
   background-color: #4a90e2;
 }
 
-#file_null {
-  display: none;
-}
-
 .plates {
   font-size: 1.5rem;
   text-align: left;
@@ -253,6 +253,7 @@ input {
     background-color: #f2f2f2;
     font-weight: 100;
     display: flex;
+    justify-content: space-between;
 
     &:hover {
       box-shadow: 3px 3px 3px 0 #a1a1a1;
@@ -266,6 +267,18 @@ input {
       flex: 1;
       font-weight: 700;
       cursor: pointer;
+    }
+
+    p {
+      flex: 2;
+      font-size: 1.25rem;
+      margin: auto;
+      text-align: center;
+    }
+
+    span {
+      display: flex;
+      flex: 1;
     }
 
     input + label:before {
@@ -299,6 +312,7 @@ input {
 
     &.is_expanded {
       display: block;
+      box-shadow: 0;
     }
   }
 }

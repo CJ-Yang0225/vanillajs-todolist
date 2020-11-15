@@ -145,6 +145,10 @@ body {
   cursor: pointer;
 }
 
+.expansion-body [name="file"] {
+  display: none;
+}
+
 .expansion-body textarea {
   margin-left: 2rem;
   width: 100%;
@@ -251,10 +255,6 @@ input {
   background-color: #4a90e2;
 }
 
-#file_null {
-  display: none;
-}
-
 .plates {
   font-size: 1.5rem;
   text-align: left;
@@ -271,6 +271,9 @@ input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .plates li:hover {
@@ -288,6 +291,24 @@ input {
           flex: 1;
   font-weight: 700;
   cursor: pointer;
+}
+
+.plates li p {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  font-size: 1.25rem;
+  margin: auto;
+  text-align: center;
+}
+
+.plates li span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .plates li input + label:before {
@@ -321,5 +342,7 @@ input {
 
 .plates .card-expansion.is_expanded {
   display: block;
+  -webkit-box-shadow: 0;
+          box-shadow: 0;
 }
 /*# sourceMappingURL=all.css.map */
