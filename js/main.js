@@ -89,6 +89,10 @@ function updateItem(indexOfCard) {
   populateList(items, items_list);
 }
 
+function deleteItem() {
+  
+}
+
 function clearInput() {
   date_input.value = "";
   time_input.value = "";
@@ -162,6 +166,7 @@ function populateList(data = [], platesList) {
     .join("");
 
   const editBtn_list = document.querySelectorAll(".edit-btn");
+  const deleteBtn_list = document.querySelectorAll(".delete-btn");
   const card_expansion_list = document.querySelectorAll(".card-expansion");
 
   editBtn_list.forEach((editBtn, index) => {
@@ -174,10 +179,10 @@ function populateList(data = [], platesList) {
     ".card-expansion .btn-primary"
   );
 
-  updateBtn_list.forEach((updateBtn, index) =>
+  updateBtn_list.forEach((updateBtn, index) => {
     updateBtn.addEventListener("click", () => updateItem(index))
-  );
-}
+    deleteBtn_list[index].addEventListener("click", () => deleteItem(index))
+  });
 
 function completedToggle(e) {
   if (!e.target.matches("input[type='checkbox']")) return;
