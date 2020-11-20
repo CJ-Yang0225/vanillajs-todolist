@@ -89,8 +89,8 @@ function updateItem(indexOfCard) {
   populateList(items, items_list);
 }
 
-function deleteItem() {
-  
+function deleteItem(indexOfCard) {
+  delete items[indexOfCard];
 }
 
 function clearInput() {
