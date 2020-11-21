@@ -90,7 +90,9 @@ function updateItem(indexOfCard) {
 }
 
 function deleteItem(indexOfCard) {
-  delete items[indexOfCard];
+  items[indexOfCard] = {};
+  localStorage.setItem("items", JSON.stringify(items));
+  populateList(items, items_list);
 }
 
 function clearInput() {
@@ -183,6 +185,7 @@ function populateList(data = [], platesList) {
     updateBtn.addEventListener("click", () => updateItem(index))
     deleteBtn_list[index].addEventListener("click", () => deleteItem(index))
   });
+}
 
 function completedToggle(e) {
   if (!e.target.matches("input[type='checkbox']")) return;
