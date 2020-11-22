@@ -90,7 +90,7 @@ function updateItem(indexOfCard) {
 }
 
 function deleteItem(indexOfCard) {
-  items[indexOfCard] = {};
+  items.splice(indexOfCard, 1);
   localStorage.setItem("items", JSON.stringify(items));
   populateList(items, items_list);
 }
