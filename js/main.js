@@ -112,7 +112,8 @@ function populateList(data = [], platesList) {
           <input type="checkbox" id="item${index}" data-idx="${index}" ${
         value.completed ? "checked" : ""
       } >
-          <label for="item${index}" class="title"">${value.title}</label>
+          <label for="item${index}" class="title">${value.title}</label>
+          <input type="text" class="title-input" style="display: none">
           <p>${value.message}</p>
           <span>
             <button title="Star Favorite" class="btn icon favorite-btn">
