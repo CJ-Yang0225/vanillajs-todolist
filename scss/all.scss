@@ -26,6 +26,7 @@ body {
 
   .nav-items {
     display: flex;
+    justify-content: space-evenly;
     list-style: none;
 
     a {
@@ -211,6 +212,10 @@ input {
   background-color: inherit;
 }
 
+.fa-star.fas {
+  color: #f5a623;
+}
+
 .more_option-btn {
   position: absolute;
   height: 2rem;
@@ -254,13 +259,26 @@ input {
     font-weight: 100;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    &.star {
+      background-color: #fff2dc;
+    }
 
     &:hover {
       box-shadow: 3px 3px 3px 0 #a1a1a1;
     }
 
     [type="checkbox"] {
-      display: none;
+      // display: none;
+      width: 1.8rem;
+      height: 1.8rem;
+      margin-right: 1rem;
+      color: #ffffff;
+      border: 2px solid #f2f2f2;
+      border-radius: 8px;
+      outline: 0;
+      background: #ffffff;
     }
 
     label {
@@ -282,13 +300,8 @@ input {
       flex: 1;
     }
 
-    input + label:before {
-      content: "⬜️";
-      margin-right: 10px;
-    }
-
-    input:checked + label:before {
-      content: "🌮";
+    input:checked + label {
+      text-decoration: line-through;
     }
 
     button {

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -29,6 +28,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   list-style: none;
 }
 
@@ -226,6 +228,10 @@ input {
   background-color: inherit;
 }
 
+.fa-star.fas {
+  color: #f5a623;
+}
+
 .more_option-btn {
   position: absolute;
   height: 2rem;
@@ -274,6 +280,13 @@ input {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.plates li.star {
+  background-color: #fff2dc;
 }
 
 .plates li:hover {
@@ -282,7 +295,14 @@ input {
 }
 
 .plates li [type="checkbox"] {
-  display: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 1rem;
+  color: #ffffff;
+  border: 2px solid #f2f2f2;
+  border-radius: 8px;
+  outline: 0;
+  background: #ffffff;
 }
 
 .plates li label {
@@ -312,13 +332,8 @@ input {
           flex: 1;
 }
 
-.plates li input + label:before {
-  content: "⬜️";
-  margin-right: 10px;
-}
-
-.plates li input:checked + label:before {
-  content: "🌮";
+.plates li input:checked + label {
+  text-decoration: line-through;
 }
 
 .plates li button {
@@ -343,8 +358,6 @@ input {
 
 .plates .card-expansion.is_expanded {
   display: block;
-  -webkit-box-shadow: 0;
-          box-shadow: 0;
   -webkit-box-shadow: 3px 3px 3px 0 #a1a1a1;
           box-shadow: 3px 3px 3px 0 #a1a1a1;
 }
