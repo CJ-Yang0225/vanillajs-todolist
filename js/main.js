@@ -61,6 +61,7 @@ function addItem() {
 }
 
 function editItem(indexOfCard) {
+  console.log(indexOfCard);
   const dateInput = document.querySelector(
     `#task${indexOfCard} + .card-expansion [name='date']`
   );
@@ -159,7 +160,7 @@ function populateList(data = [], platesList) {
           <p>${value.message}</p>
           <span>
             <button title="Star Favorite" class="btn icon favorite-btn">
-              <i class="${value.favorite? "fas" : "far"} fa-star icon"></i>
+              <i class="${value.favorite ? "fas" : "far"} fa-star icon"></i>
             </button>
             <button title="Edit" class="btn icon edit-btn">
               <i class="far fa-edit icon"></i>
