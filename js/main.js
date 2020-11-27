@@ -2,7 +2,7 @@ const links = document.querySelectorAll(".nav-item-link");
 
 const moreOption_btn = document.querySelector(".more_option-btn");
 const addTask_expansion = document.querySelector(".add_task-expansion");
-const addTask_input = document.querySelector("[type=text]");
+const addTask_input = document.querySelector("#add_task-input");
 const date_input = document.querySelector("#date-input");
 const time_input = document.querySelector("#time-input");
 const file = document.querySelector("#file_null");
@@ -14,22 +14,21 @@ const save_btn = document.querySelector(".btn-primary");
 const items = JSON.parse(localStorage.getItem("items")) || []; // 資料獲取時為字串，需要轉換物件 (注意無資料的處理)
 const items_list = document.querySelector(".plates");
 
-links.forEach(link => {
-  link.addEventListener("click", function() {
-    links.forEach(link => link.classList.remove("active"));
+links.forEach((link) => {
+  link.addEventListener("click", function () {
+    links.forEach((link) => link.classList.remove("active"));
     link.classList.add("active");
+    populateList(items, items_list);
   });
 });
 
-moreOption_btn.addEventListener("click", function() {
-  // if (addTask_expansion.classList.contains("is_expanded")) {
-  //   addTask_expansion.classList.remove("is_expanded");
-  // } else {
-  //   addTask_expansion.classList.add("is_expanded");
-  // }
+addTask_input.addEventListener("click", addTaskExpansionToggle);
 
+moreOption_btn.addEventListener("click", addTaskExpansionToggle);
+
+function addTaskExpansionToggle() {
   addTask_expansion.classList.toggle("is_expanded");
-});
+}
 
 function addItem() {
   const date = date_input.value || "";
@@ -53,7 +52,7 @@ function addItem() {
     favorite: false,
     deadline: "",
     date,
-    time
+    time,
   }); // 取 input 的資料放入 items (key跟value值相同可以只寫一個)
 
   localStorage.setItem("items", JSON.stringify(items)); // 字串化傳入Local Storage
@@ -61,7 +60,7 @@ function addItem() {
   populateList(items, items_list);
 }
 
-function updateItem(indexOfCard) {
+function editItem(indexOfCard) {
   const dateInput = document.querySelector(
     `#task${indexOfCard} + .card-expansion [name='date']`
   );
@@ -89,6 +88,37 @@ function updateItem(indexOfCard) {
   populateList(items, items_list);
 }
 
+function starItem(indexOfCard) {
+  items[indexOfCard].favorite = !items[indexOfCard].favorite;
+  localStorage.setItem("items", JSON.stringify(items));
+  populateList(items, items_list);
+}
+
+function completedToggle(e) {
+  if (!e.target.matches("input[type='checkbox']")) return;
+  const el = e.target;
+  const index = el.dataset.idx; // 自定義資料屬性(data-idx)
+  items[index].completed = !items[index].completed;
+  localStorage.setItem("items", JSON.stringify(items));
+
+  populateList(items, items_list);
+}
+
+function cancelItem(indexOfCard) {
+  const inputs = document.querySelectorAll(
+    `#task${indexOfCard} + .card-expansion input`
+  );
+
+  inputs.forEach((input) => (input.value = ""));
+  document.querySelector(
+    `#task${indexOfCard} + .card-expansion textarea`
+  ).value = "";
+
+  document
+    .querySelector(`#task${indexOfCard} + .card-expansion`)
+    .classList.remove("is_expanded");
+}
+
 function deleteItem(indexOfCard) {
   items.splice(indexOfCard, 1);
   localStorage.setItem("items", JSON.stringify(items));
@@ -104,20 +134,32 @@ function clearInput() {
 }
 
 function populateList(data = [], platesList) {
-  platesList.innerHTML = data
+  data
+    .sort((a, b) => (a.title > b.title ? 1 : -1))
+    .sort((a, b) => !a.favorite - !b.favorite);
+
+  let tasks = [];
+  if (links[1].classList.contains("active")) {
+    tasks = data.filter((item) => item.completed == false);
+  } else if (links[2].classList.contains("active")) {
+    tasks = data.filter((item) => item.completed == true);
+  } else {
+    tasks = data;
+  }
+
+  platesList.innerHTML = tasks
     .map((value, index) => {
       return `
       <div class="card" id="task${index}">
-        <li>
+        <li class=${value.favorite ? "star" : ""}>
           <input type="checkbox" id="item${index}" data-idx="${index}" ${
         value.completed ? "checked" : ""
       } >
           <label for="item${index}" class="title">${value.title}</label>
-          <input type="text" class="title-input" style="display: none">
           <p>${value.message}</p>
           <span>
             <button title="Star Favorite" class="btn icon favorite-btn">
-              <i class="fa-star icon far"></i>
+              <i class="${value.favorite? "fas" : "far"} fa-star icon"></i>
             </button>
             <button title="Edit" class="btn icon edit-btn">
               <i class="far fa-edit icon"></i>
@@ -168,38 +210,34 @@ function populateList(data = [], platesList) {
     })
     .join("");
 
+  const favoriteBtn_list = document.querySelectorAll(".favorite-btn");
   const editBtn_list = document.querySelectorAll(".edit-btn");
   const deleteBtn_list = document.querySelectorAll(".delete-btn");
+
   const card_expansion_list = document.querySelectorAll(".card-expansion");
-
-  editBtn_list.forEach((editBtn, index) => {
-    editBtn.addEventListener("click", function() {
-      card_expansion_list[index].classList.toggle("is_expanded");
-    });
-  });
-
   const updateBtn_list = document.querySelectorAll(
     ".card-expansion .btn-primary"
   );
 
-  updateBtn_list.forEach((updateBtn, index) => {
-    updateBtn.addEventListener("click", () => updateItem(index))
-    deleteBtn_list[index].addEventListener("click", () => deleteItem(index))
-  });
-}
+  const cancelBtn_list = document.querySelectorAll(
+    ".card-expansion .btn-danger"
+  );
 
-function completedToggle(e) {
-  if (!e.target.matches("input[type='checkbox']")) return;
-  const el = e.target;
-  const index = el.dataset.idx; // 自定義資料屬性(data-idx)
-  items[index].completed = !items[index].completed;
-  // el.checked = items[index].completed;
-  localStorage.setItem("items", JSON.stringify(items));
-  populateList(items, items_list);
+  if (tasks.length == 0) return;
+
+  for (let i = 0; i < tasks.length; i++) {
+    editBtn_list[i].addEventListener("click", () =>
+      card_expansion_list[i].classList.toggle("is_expanded")
+    );
+    favoriteBtn_list[i].addEventListener("click", () => starItem(i));
+    deleteBtn_list[i].addEventListener("click", () => deleteItem(i));
+    updateBtn_list[i].addEventListener("click", () => editItem(i));
+    cancelBtn_list[i].addEventListener("click", () => cancelItem(i));
+  }
 }
 
 cancel_btn.addEventListener("click", clearInput);
 save_btn.addEventListener("click", addItem);
 items_list.addEventListener("click", completedToggle);
 
-populateList(items, items_list);
+window.addEventListener("load", populateList(items, items_list));
