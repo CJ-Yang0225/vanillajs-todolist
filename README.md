@@ -21,12 +21,12 @@ Todo-list with Vanilla JS
 
 #### Document Object Module
 
-- Element:
+- Element
 
   - Properties: `.classList`, `.innerHTML`
   - Methods: `.addEventListener()`, `.querySelector()`, `.querySelectorAll()`, `.matches()`
 
-- Events:
+- Events
 
   - Properties: `target`, `currentTarget`,
   - Methods: `.preventDefault()`, `.stopPropagation()`, `.stopImmediatePropagation()`
