@@ -270,7 +270,7 @@ input {
     }
 
     [type="checkbox"] {
-      // display: none; // Visibility: Hidden 或 Opacity: 0
+      // 若要自訂checkbox display: none; // Visibility: Hidden 或 Opacity: 0
       width: 1.8rem;
       height: 1.8rem;
       margin-right: 1rem;
@@ -328,5 +328,22 @@ input {
       display: block;
       box-shadow: 3px 3px 3px 0 #a1a1a1;
     }
+  }
+}
+
+.tasks-status {
+  margin: 2rem;
+  text-align: right;
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.75rem;
+  color: #c8c8c8;
+}
+
+.author {
+  color: #a1a1a1;
+  text-align: center;
+  .author-footer-link {
+    color: inherit;
   }
 }

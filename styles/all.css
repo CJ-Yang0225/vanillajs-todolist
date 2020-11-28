@@ -361,4 +361,22 @@ input {
   -webkit-box-shadow: 3px 3px 3px 0 #a1a1a1;
           box-shadow: 3px 3px 3px 0 #a1a1a1;
 }
+
+.tasks-status {
+  margin: 2rem;
+  text-align: right;
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.75rem;
+  color: #c8c8c8;
+}
+
+.author {
+  color: #a1a1a1;
+  text-align: center;
+}
+
+.author .author-footer-link {
+  color: inherit;
+}
 /*# sourceMappingURL=all.css.map */
