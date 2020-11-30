@@ -63,7 +63,6 @@
   }
 
   function editItem(indexOfCard) {
-    console.log(indexOfCard);
     const dateInput = document.querySelector(
       `#task${indexOfCard} + .card-expansion [name='date']`
     );
@@ -92,7 +91,6 @@
   }
 
   function starItem(indexOfCard, event) {
-    console.log(indexOfCard, event);
     items[indexOfCard].favorite = !items[indexOfCard].favorite;
     localStorage.setItem("items", JSON.stringify(items));
     populateList(items, items_list);
