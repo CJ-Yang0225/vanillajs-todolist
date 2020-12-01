@@ -11,7 +11,7 @@ body {
   background-color: #e1e1e1;
   line-height: 1.5;
   overflow: scroll;
-  overflow-x: hidden;
+  overflow-x: hidden;  
 }
 
 .navbar {
@@ -26,13 +26,14 @@ body {
 
   .nav-items {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: stretch;
     list-style: none;
 
     a {
       flex: 1;
       color: $darken-primary;
-      font-size: 1.5rem;
+      font-size: calc(12px + 2vmin);
       text-decoration: none;
       padding: 18px 0;
       font-weight: 700;
@@ -45,7 +46,7 @@ body {
         // border-bottom: 5px solid $darken-primary;
         box-shadow: 0 -5px 0 0 $darken-primary inset;
         color: white;
-      }
+      }      
     }
   }
 
@@ -246,13 +247,13 @@ input {
 }
 
 .plates {
-  font-size: 1.5rem;
+  font-size: calc(12px + 2vmin);
   text-align: left;
   list-style: none;
 
   li {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 0.31rem;
+    border-radius: 0.3rem;
     padding: 1.5rem 2rem;
     margin-top: 1rem;
     background-color: #f2f2f2;

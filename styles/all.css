@@ -28,9 +28,12 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   list-style: none;
 }
 
@@ -39,7 +42,7 @@ body {
       -ms-flex: 1;
           flex: 1;
   color: #00408b;
-  font-size: 1.5rem;
+  font-size: calc(12px + 2vmin);
   text-decoration: none;
   padding: 18px 0;
   font-weight: 700;
@@ -262,14 +265,14 @@ input {
 }
 
 .plates {
-  font-size: 1.5rem;
+  font-size: calc(12px + 2vmin);
   text-align: left;
   list-style: none;
 }
 
 .plates li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.31rem;
+  border-radius: 0.3rem;
   padding: 1.5rem 2rem;
   margin-top: 1rem;
   background-color: #f2f2f2;
