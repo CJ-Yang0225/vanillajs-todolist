@@ -27,7 +27,6 @@
   addTask_input.addEventListener("click", addTaskExpansionToggle);
   addTask_input.addEventListener("keydown", (e) => {
     if (e.keyCode == 13) addItem();
-    console.log(this);
   });
 
   moreOption_btn.addEventListener("click", addTaskExpansionToggle);
