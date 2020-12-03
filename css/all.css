@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -58,6 +59,12 @@ body {
   color: white;
 }
 
+@media only screen and (max-width: 320px) and (min-width: 280px) {
+  .navbar .nav-items a {
+    font-size: calc(11px + 2vmin);
+  }
+}
+
 .navbar .nav-item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -109,7 +116,7 @@ body {
 }
 
 .expansion-body {
-  padding: 1.5rem 4.5rem;
+  padding: 1.5rem 3rem;
   background-color: #f2f2f2;
   margin: auto;
   text-align: left;
@@ -156,7 +163,7 @@ body {
 
 .expansion-body textarea {
   margin-left: 2rem;
-  width: 100%;
+  width: 80%;
   max-width: -webkit-fill-available;
   max-width: -moz-available;
   max-width: fill-available;
@@ -166,6 +173,12 @@ body {
   border-radius: 5px;
   outline-color: #b3d4fc;
   padding: 0.5rem 1rem;
+}
+
+@media only screen and (max-width: 320px) and (min-width: 280px) {
+  .expansion-body {
+    padding: 1rem 0rem;
+  }
 }
 
 .expansion-footer {
@@ -313,6 +326,8 @@ input {
       -ms-flex: 1;
           flex: 1;
   font-weight: 700;
+  white-space: nowrap;
+  /* 強制不換行 */
   cursor: pointer;
 }
 
@@ -324,6 +339,11 @@ input {
   margin: auto;
   padding: auto;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 加省略符號 */
+  white-space: nowrap;
+  /* 強制不換行 */
 }
 
 .plates li span {
