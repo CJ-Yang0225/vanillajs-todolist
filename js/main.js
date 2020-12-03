@@ -1,47 +1,46 @@
-(function () {
+(function() {
   const links = document.querySelectorAll(".nav-item-link");
 
-  const moreOption_btn = document.querySelector(".more_option-btn");
-  const addTask_expansion = document.querySelector(".add_task-expansion");
-  const addTask_input = document.querySelector("#add_task-input");
-  const date_input = document.querySelector("#date-input");
-  const time_input = document.querySelector("#time-input");
+  const moreOptionBtn = document.querySelector(".more_option-btn");
+  const addTaskExpansion = document.querySelector(".add_task-expansion");
+  const addTaskInput = document.querySelector("#add_task-input");
+  const dateInput = document.querySelector("#date-input");
+  const timeInput = document.querySelector("#time-input");
   const file = document.querySelector("#file_null");
-  const message_area = document.querySelector("#message-textarea");
-  const cancel_btn = document.querySelector(".btn-danger");
-  const save_btn = document.querySelector(".btn-primary");
+  const messageArea = document.querySelector("#message-textarea");
+  const cancelBtn = document.querySelector(".btn-danger");
+  const saveBtn = document.querySelector(".btn-primary");
 
   const items = JSON.parse(localStorage.getItem("items")) || []; // 資料獲取時為字串，需要轉換物件 (注意無資料的處理)
-  const items_list = document.querySelector(".plates");
+  const itemsList = document.querySelector(".plates");
 
   const taskStatus = document.querySelector(".tasks-status");
 
-  links.forEach((link) => {
-    link.addEventListener("click", function () {
-      links.forEach((link) => link.classList.remove("active"));
+  links.forEach(link => {
+    link.addEventListener("click", function() {
+      links.forEach(link => link.classList.remove("active"));
       link.classList.add("active");
-      populateList(items, items_list);
+      populateList(items, itemsList);
     });
   });
 
-  addTask_input.addEventListener("click", addTaskExpansionToggle);
-  addTask_input.addEventListener("keydown", (e) => {
+  addTaskInput.addEventListener("click", addTaskExpansionToggle);
+  addTaskInput.addEventListener("keydown", e => {
     if (e.keyCode == 13) addItem();
-    console.log(this);
   });
 
-  moreOption_btn.addEventListener("click", addTaskExpansionToggle);
+  moreOptionBtn.addEventListener("click", addTaskExpansionToggle);
 
   function addTaskExpansionToggle() {
-    addTask_expansion.classList.toggle("is_expanded");
+    addTaskExpansion.classList.toggle("is_expanded");
   }
 
   function addItem() {
-    const date = date_input.value || "";
-    const time = time_input.value || "";
+    const date = dateInput.value || "";
+    const time = timeInput.value || "";
     const fileName = file.files[0] ? file.files[0].name : "";
-    const title = addTask_input.value;
-    const message = message_area.value || "";
+    const title = addTaskInput.value;
+    const message = messageArea.value || "";
 
     // fileName.innerHTML = file.files[0].name;
 
@@ -58,12 +57,12 @@
       favorite: false,
       deadline: "",
       date,
-      time,
+      time
     }); // 取 input 的資料放入 items (key跟value值相同可以只寫一個)
 
     localStorage.setItem("items", JSON.stringify(items)); // 字串化傳入Local Storage
     clearInput();
-    populateList(items, items_list);
+    populateList(items, itemsList);
   }
 
   function editItem(indexOfCard) {
@@ -82,22 +81,24 @@
 
     dateInput.value = dateInput.value || items[indexOfCard]["date"];
     timeInput.value = timeInput.value || items[indexOfCard]["time"];
-    fileInput.value = fileInput.value || items[indexOfCard]["fileName"];
+    fileInput.files[0] = fileInput.files[0] || items[indexOfCard]["fileName"];
     messageArea.value = messageArea.value || items[indexOfCard]["message"];
 
     items[indexOfCard]["date"] = dateInput.value;
     items[indexOfCard]["time"] = timeInput.value;
-    items[indexOfCard]["fileName"] = fileInput.value;
+    items[indexOfCard]["fileName"] = fileInput.files[0]
+      ? fileInput.files[0].name
+      : "";
     items[indexOfCard]["message"] = messageArea.value;
 
     localStorage.setItem("items", JSON.stringify(items)); // 字串化傳入Local Storage
-    populateList(items, items_list);
+    populateList(items, itemsList);
   }
 
-  function starItem(indexOfCard, event) {
+  function starItem(indexOfCard) {
     items[indexOfCard].favorite = !items[indexOfCard].favorite;
     localStorage.setItem("items", JSON.stringify(items));
-    populateList(items, items_list);
+    populateList(items, itemsList);
   }
 
   function completedToggle(e) {
@@ -107,7 +108,7 @@
     items[index].completed = !items[index].completed;
     localStorage.setItem("items", JSON.stringify(items));
 
-    populateList(items, items_list);
+    populateList(items, itemsList);
   }
 
   function cancelItem(indexOfCard) {
@@ -115,7 +116,7 @@
       `#task${indexOfCard} + .card-expansion input`
     );
 
-    inputs.forEach((input) => (input.value = ""));
+    inputs.forEach(input => (input.value = ""));
     document.querySelector(
       `#task${indexOfCard} + .card-expansion textarea`
     ).value = "";
@@ -128,15 +129,15 @@
   function deleteItem(indexOfCard) {
     items.splice(indexOfCard, 1);
     localStorage.setItem("items", JSON.stringify(items));
-    populateList(items, items_list);
+    populateList(items, itemsList);
   }
 
   function clearInput() {
-    date_input.value = "";
-    time_input.value = "";
-    addTask_input.value = "";
-    message_area.value = "";
-    addTask_expansion.classList.remove("is_expanded");
+    dateInput.value = "";
+    timeInput.value = "";
+    addTaskInput.value = "";
+    messageArea.value = "";
+    addTaskExpansion.classList.remove("is_expanded");
   }
 
   function populateList(data = [], platesList) {
@@ -145,12 +146,12 @@
       .sort((a, b) => !a.favorite - !b.favorite);
 
     let tasks = [];
-    let tasks_in_progress = data.filter((item) => item.completed == false);
-    let tasks_completed = data.filter((item) => item.completed == true);
+    let tasksInProgress = data.filter(item => item.completed == false);
+    let tasksCompleted = data.filter(item => item.completed == true);
     if (links[1].classList.contains("active")) {
-      tasks = tasks_in_progress;
+      tasks = tasksInProgress;
     } else if (links[2].classList.contains("active")) {
-      tasks = tasks_completed;
+      tasks = tasksCompleted;
     } else {
       tasks = data;
     }
@@ -164,7 +165,7 @@
           value.completed ? "checked" : ""
         } >
             <label for="item${index}" class="title">${value.title}</label>
-            <p>${value.message}</p>
+            <p title=${value.message}>${value.message}</p>
             <span>
               <button title="Star Favorite" class="btn icon favorite-btn">
                 <i class="${value.favorite ? "fas" : "far"} fa-star icon"></i>
@@ -218,40 +219,40 @@
       })
       .join("");
 
-    taskStatus.innerHTML = `${tasks_in_progress.length} in progress<br>${tasks_completed.length} in completed`;
+    taskStatus.innerHTML = `${tasksInProgress.length} in progress<br>${tasksCompleted.length} in completed`;
 
-    const favoriteBtn_list = document.querySelectorAll(".favorite-btn");
-    const editBtn_list = document.querySelectorAll(".edit-btn");
-    const deleteBtn_list = document.querySelectorAll(".delete-btn");
+    const favoriteBtnList = document.querySelectorAll(".favorite-btn");
+    const editBtnList = document.querySelectorAll(".edit-btn");
+    const deleteBtnList = document.querySelectorAll(".delete-btn");
 
-    const card_expansion_list = document.querySelectorAll(".card-expansion");
-    const updateBtn_list = document.querySelectorAll(
+    const cardExpansionList = document.querySelectorAll(".card-expansion");
+    const updateBtnList = document.querySelectorAll(
       ".card-expansion .btn-primary"
     );
 
-    const cancelBtn_list = document.querySelectorAll(
+    const cancelBtnList = document.querySelectorAll(
       ".card-expansion .btn-danger"
     );
 
     if (tasks.length == 0) return;
 
     for (let i = 0; i < tasks.length; i++) {
-      editBtn_list[i].addEventListener("click", () =>
-        card_expansion_list[i].classList.toggle("is_expanded")
+      editBtnList[i].addEventListener("click", () =>
+        cardExpansionList[i].classList.toggle("is_expanded")
       );
-      // favoriteBtn_list[i].addEventListener("click", this.starItem.bind(this, i));
-      favoriteBtn_list[i].addEventListener("click", () => starItem(i));
-      deleteBtn_list[i].addEventListener("click", () => deleteItem(i));
-      updateBtn_list[i].addEventListener("click", () => editItem(i));
-      cancelBtn_list[i].addEventListener("click", () => cancelItem(i));
+      // favoriteBtnList[i].addEventListener("click", this.starItem.bind(this, i));
+      favoriteBtnList[i].addEventListener("click", () => starItem(i));
+      deleteBtnList[i].addEventListener("click", () => deleteItem(i));
+      updateBtnList[i].addEventListener("click", () => editItem(i));
+      cancelBtnList[i].addEventListener("click", () => cancelItem(i));
     }
   }
 
-  cancel_btn.addEventListener("click", clearInput);
-  save_btn.addEventListener("click", addItem);
-  items_list.addEventListener("click", completedToggle);
+  cancelBtn.addEventListener("click", clearInput);
+  saveBtn.addEventListener("click", addItem);
+  itemsList.addEventListener("click", completedToggle);
 
-  populateList(items, items_list);
+  populateList(items, itemsList);
 
   /* window.addEventListener("click", (e) => {
     e.preventDefault(); // 停止預設功能(點擊超連結的時候，不執行原本預設的行為)
