@@ -155,7 +155,6 @@ body {
     border-radius: 5px;
     outline-color: #b3d4fc;
     padding: 0.5rem 1rem;
-    
   }
 
   @media only screen and (max-width: 320px) and (min-width: 280px) {
@@ -182,7 +181,7 @@ body {
   }
 }
 
-input {
+.input {
   font: inherit;
 }
 
@@ -298,8 +297,17 @@ input {
       cursor: pointer;
     }
 
+    .edit_task-input {
+      width: 15%;
+      flex-grow: 1;
+      font-weight: 700;
+      white-space: nowrap; /* 強制不換行 */
+      border: 0;
+      outline: none;
+    }
+
     p {
-      flex: 2;
+      flex-grow: 2;
       font-size: 1.2rem;
       margin: auto;
       padding: auto;
