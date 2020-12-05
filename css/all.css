@@ -10,6 +10,7 @@ body {
   font-family: Helvetica;
   background-color: #e1e1e1;
   line-height: 1.5;
+  list-style: none;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -35,7 +36,6 @@ body {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  list-style: none;
 }
 
 .navbar .nav-items a {
@@ -279,7 +279,6 @@ body {
 
 .plates {
   font-size: 1.5rem;
-  list-style: none;
 }
 
 .plates li {

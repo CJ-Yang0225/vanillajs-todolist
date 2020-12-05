@@ -16,6 +16,7 @@ body {
   font-family: Helvetica;
   background-color: $bg-color;
   line-height: 1.5;
+  list-style: none;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -34,7 +35,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    list-style: none;
 
     a {
       flex: 1;
@@ -261,7 +261,6 @@ body {
 
 .plates {
   font-size: 1.5rem;
-  list-style: none;
 
   li {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -308,7 +307,7 @@ body {
       background-color: white;
       border: 1px solid rgba(0, 0, 0, 0.2);
       font-size: 1.2rem;
-      font-weight: 700;      
+      font-weight: 700;
 
       &:disabled {
         background-color: inherit;
