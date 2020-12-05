@@ -66,6 +66,9 @@
   }
 
   function editItem(indexOfCard) {
+    const titleInput = document.querySelector(
+      `#item${indexOfCard} + [type='text']`
+    );
     const dateInput = document.querySelector(
       `#task${indexOfCard} + .card-expansion [name='date']`
     );
@@ -79,11 +82,13 @@
       `#task${indexOfCard} + .card-expansion textarea`
     );
 
+    titleInput.value = titleInput.value || items[indexOfCard]["title"];
     dateInput.value = dateInput.value || items[indexOfCard]["date"];
     timeInput.value = timeInput.value || items[indexOfCard]["time"];
     fileInput.files[0] = fileInput.files[0] || items[indexOfCard]["fileName"];
     messageArea.value = messageArea.value || items[indexOfCard]["message"];
 
+    items[indexOfCard]["title"] = titleInput.value;
     items[indexOfCard]["date"] = dateInput.value;
     items[indexOfCard]["time"] = timeInput.value;
     items[indexOfCard]["fileName"] = fileInput.files[0]
@@ -155,9 +160,7 @@
     } else {
       tasks = data;
     }
-    {
-      /* <label for="item${index}" class="title">${value.title}</label> */
-    }
+
     platesList.innerHTML = tasks
       .map((value, index) => {
         return `
@@ -168,7 +171,7 @@
         } >            
             <input type="text" value=${
               value.title
-            } class="edit_task-input">
+            } class="edit_task-input" disabled>
             <p title=${value.message}>${value.message}</p>
             <span>
               <button title="Star Favorite" class="btn icon favorite-btn">
@@ -229,6 +232,8 @@
     const editBtnList = document.querySelectorAll(".edit-btn");
     const deleteBtnList = document.querySelectorAll(".delete-btn");
 
+    const editTaskInput = document.querySelectorAll(".edit_task-input");
+
     const cardExpansionList = document.querySelectorAll(".card-expansion");
     const updateBtnList = document.querySelectorAll(
       ".card-expansion .btn-primary"
@@ -241,9 +246,10 @@
     if (tasks.length == 0) return;
 
     for (let i = 0; i < tasks.length; i++) {
-      editBtnList[i].addEventListener("click", () =>
-        cardExpansionList[i].classList.toggle("is_expanded")
-      );
+      editBtnList[i].addEventListener("click", () => {
+        cardExpansionList[i].classList.toggle("is_expanded");
+        editTaskInput[i].disabled = !editTaskInput[i].disabled;
+      });
       // favoriteBtnList[i].addEventListener("click", this.starItem.bind(this, i));
       favoriteBtnList[i].addEventListener("click", () => starItem(i));
       deleteBtnList[i].addEventListener("click", () => deleteItem(i));
