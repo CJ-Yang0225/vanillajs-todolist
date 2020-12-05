@@ -59,7 +59,7 @@ body {
   color: white;
 }
 
-@media only screen and (max-width: 320px) and (min-width: 280px) {
+@media only screen and (max-width: 320px) {
   .navbar .nav-items a {
     font-size: calc(11px + 2vmin);
   }
@@ -175,7 +175,7 @@ body {
   padding: 0.5rem 1rem;
 }
 
-@media only screen and (max-width: 320px) and (min-width: 280px) {
+@media only screen and (max-width: 340px) {
   .expansion-body {
     padding: 1rem 0rem;
   }
@@ -228,7 +228,7 @@ body {
 
 .file-label:hover {
   cursor: pointer;
-  background-color: #4a90e2;
+  background-color: #00408b;
 }
 
 .icon {
@@ -278,8 +278,7 @@ body {
 }
 
 .plates {
-  font-size: calc(12px + 2vmin);
-  text-align: left;
+  font-size: 1.5rem;
   list-style: none;
 }
 
@@ -332,24 +331,27 @@ body {
 }
 
 .plates li .edit_task-input {
-  width: 15%;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  width: 20%;
+  margin-right: 8px;
+  padding: 0.25rem;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
   font-weight: 700;
-  white-space: nowrap;
-  /* 強制不換行 */
+}
+
+.plates li .edit_task-input:disabled {
+  background-color: inherit;
   border: 0;
   outline: none;
 }
 
 .plates li p {
   -webkit-box-flex: 2;
-      -ms-flex-positive: 2;
-          flex-grow: 2;
+      -ms-flex: 2;
+          flex: 2;
   font-size: 1.2rem;
   margin: auto;
-  padding: auto;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -379,7 +381,7 @@ body {
 
 .plates li button:hover {
   border-radius: 50%;
-  background-color: #c8c8c8c8;
+  background-color: #c8c8c8;
   cursor: pointer;
 }
 

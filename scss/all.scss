@@ -1,4 +1,10 @@
-$darken-primary: #00408b;
+$dark-blue: #00408b;
+$light-blue: #4a90e2;
+$red: #d0021b;
+$light-gray: #f2f2f2;
+$gray: #c8c8c8;
+$dark-gray: #757575;
+$bg-color: #e1e1e1;
 
 * {
   padding: 0;
@@ -8,14 +14,14 @@ $darken-primary: #00408b;
 
 body {
   font-family: Helvetica;
-  background-color: #e1e1e1;
+  background-color: $bg-color;
   line-height: 1.5;
   overflow: scroll;
   overflow-x: hidden;
 }
 
 .navbar {
-  background: #4a90e2;
+  background: $light-blue;
 
   .nav-tabs {
     text-align: center;
@@ -32,7 +38,7 @@ body {
 
     a {
       flex: 1;
-      color: $darken-primary;
+      color: $dark-blue;
       font-size: calc(12px + 2vmin);
       text-decoration: none;
       padding: 18px 0;
@@ -43,12 +49,12 @@ body {
       }
 
       &.active {
-        // border-bottom: 5px solid $darken-primary;
-        box-shadow: 0 -5px 0 0 $darken-primary inset;
+        // border-bottom: 5px solid $dark-blue;
+        box-shadow: 0 -5px 0 0 $dark-blue inset;
         color: white;
       }
 
-      @media only screen and (max-width: 320px) and (min-width: 280px) {
+      @media only screen and (max-width: 320px) {
         font-size: calc(11px + 2vmin);
       }
     }
@@ -56,7 +62,6 @@ body {
 
   .nav-item {
     display: flex;
-    // justify-content: center;
     width: 100%;
   }
 }
@@ -86,7 +91,7 @@ body {
     height: inherit;
     background-color: #ffffff;
     padding: 0 0 0 4.2rem;
-    border: 2px solid #c8c8c8;
+    border: 2px solid $gray;
     border-radius: inherit;
   }
 }
@@ -94,7 +99,7 @@ body {
 .add_task-expansion {
   font-size: 1.2rem;
   display: none;
-  border: 2px solid #c8c8c8;
+  border: 2px solid $gray;
   border-top: 0;
   border-radius: 0.31rem;
   margin-bottom: 0.5rem;
@@ -107,7 +112,7 @@ body {
 
 .expansion-body {
   padding: 1.5rem 3rem;
-  background-color: #f2f2f2;
+  background-color: $light-gray;
   margin: auto;
   text-align: left;
 
@@ -157,7 +162,7 @@ body {
     padding: 0.5rem 1rem;
   }
 
-  @media only screen and (max-width: 320px) and (min-width: 280px) {
+  @media only screen and (max-width: 340px) {
     padding: 1rem 0rem;
   }
 }
@@ -190,13 +195,13 @@ body {
   line-height: 1;
   left: 2rem;
   top: 1.2rem;
-  color: #c8c8c8;
+  color: $gray;
 }
 
 .file-label {
   margin-left: 2rem;
   margin-bottom: 1rem;
-  background-color: #c8c8c8;
+  background-color: $gray;
   color: #ffffff;
   border-radius: 4px;
   width: 2rem;
@@ -204,7 +209,7 @@ body {
 
   &:hover {
     cursor: pointer;
-    background-color: #4a90e2;
+    background-color: $dark-blue;
   }
 }
 
@@ -255,8 +260,7 @@ body {
 }
 
 .plates {
-  font-size: calc(12px + 2vmin);
-  text-align: left;
+  font-size: 1.5rem;
   list-style: none;
 
   li {
@@ -298,18 +302,25 @@ body {
     }
 
     .edit_task-input {
-      width: 15%;
-      font-weight: 700;
-      white-space: nowrap; /* 強制不換行 */
-      border: 0;
-      outline: none;
+      width: 20%;
+      margin-right: 8px;
+      padding: 0.25rem;
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      font-size: 1.2rem;
+      font-weight: 700;      
+
+      &:disabled {
+        background-color: inherit;
+        border: 0;
+        outline: none;
+      }
     }
 
     p {
-      flex-grow: 2;
+      flex: 2;
       font-size: 1.2rem;
       margin: auto;
-      padding: auto;
       text-align: center;
       overflow: hidden;
       text-overflow: ellipsis; /* 加省略符號 */
@@ -332,7 +343,7 @@ body {
 
       &:hover {
         border-radius: 50%;
-        background-color: #c8c8c8c8;
+        background-color: $gray;
         cursor: pointer;
       }
     }
@@ -358,7 +369,7 @@ body {
   font-size: 1.5rem;
   font-style: italic;
   line-height: 1.75rem;
-  color: #c8c8c8;
+  color: $gray;
 }
 
 .author {
