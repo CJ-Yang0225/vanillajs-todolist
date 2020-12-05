@@ -1,4 +1,4 @@
-(function() {
+(function () {
   const links = document.querySelectorAll(".nav-item-link");
 
   const moreOptionBtn = document.querySelector(".more_option-btn");
@@ -17,7 +17,7 @@
   const taskStatus = document.querySelector(".tasks-status");
 
   links.forEach(link => {
-    link.addEventListener("click", function() {
+    link.addEventListener("click", function () {
       links.forEach(link => link.classList.remove("active"));
       link.classList.add("active");
       populateList(items, itemsList);
@@ -57,7 +57,7 @@
       favorite: false,
       deadline: "",
       date,
-      time
+      time,
     }); // 取 input 的資料放入 items (key跟value值相同可以只寫一個)
 
     localStorage.setItem("items", JSON.stringify(items)); // 字串化傳入Local Storage
@@ -155,7 +155,9 @@
     } else {
       tasks = data;
     }
-
+    {
+      /* <label for="item${index}" class="title">${value.title}</label> */
+    }
     platesList.innerHTML = tasks
       .map((value, index) => {
         return `
@@ -163,8 +165,10 @@
           <li class=${value.favorite ? "star" : ""}>
             <input type="checkbox" id="item${index}" data-idx="${index}" ${
           value.completed ? "checked" : ""
-        } >
-            <label for="item${index}" class="title">${value.title}</label>
+        } >            
+            <input type="text" value=${
+              value.title
+            } class="edit_task-input">
             <p title=${value.message}>${value.message}</p>
             <span>
               <button title="Star Favorite" class="btn icon favorite-btn">
@@ -202,7 +206,7 @@
               <i class="far fa-message-dots icon mr-s"></i>
               message
             </label>
-            <textarea name="message"></textarea>
+            <textarea name="message" placeholder="Type your memo here…"></textarea>
           </div>
           <div class="expansion-footer">
             <button class="btn btn-danger">
