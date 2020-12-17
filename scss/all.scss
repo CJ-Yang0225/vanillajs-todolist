@@ -331,7 +331,7 @@ body {
       flex: 1;
     }
 
-    input:checked + label {
+    input:checked + input {
       text-decoration: line-through;
     }
 
