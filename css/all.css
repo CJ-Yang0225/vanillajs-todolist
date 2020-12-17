@@ -368,7 +368,7 @@ body {
           flex: 1;
 }
 
-.plates li input:checked + label {
+.plates li input:checked + input {
   text-decoration: line-through;
 }
 
