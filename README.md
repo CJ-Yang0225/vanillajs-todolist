@@ -8,7 +8,7 @@ Todo-list with Vanilla JS
 
 ### 專案說明
 
-使用原生 `JavaScript` 操作 `DOM API`以及練習`SCSS`，順便紀念我的髒髒程式碼 :)
+使用原生 `JavaScript` 操作 `DOM API`以及練習`SCSS`，順便紀念我的髒Code :)
 
 ---
 
@@ -30,7 +30,7 @@ Todo-list with Vanilla JS
 
 - Events
 
-  - Properties: `target`, `currentTarget`,
+  - Properties: `.target`, `.currentTarget`,
   - Methods: `.preventDefault()`, `.stopPropagation()`, `.stopImmediatePropagation()`
 
 - Window
