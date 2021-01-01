@@ -206,7 +206,7 @@
             </label>
             <input type="file" name="file">
             <label for="" class="message-label">
-              <i class="far fa-message-dots icon mr-s"></i>
+              <i class="far fa-comment-dots icon mr-s"></i>
               message
             </label>
             <textarea name="message" placeholder="Type your memo here…"></textarea>
