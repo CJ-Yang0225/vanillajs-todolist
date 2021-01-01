@@ -16,16 +16,16 @@
 
   const taskStatus = document.querySelector(".tasks-status");
 
-  links.forEach(link => {
+  links.forEach((link) => {
     link.addEventListener("click", function () {
-      links.forEach(link => link.classList.remove("active"));
+      links.forEach((link) => link.classList.remove("active"));
       link.classList.add("active");
       populateList(items, itemsList);
     });
   });
 
   addTaskInput.addEventListener("click", addTaskExpansionToggle);
-  addTaskInput.addEventListener("keydown", e => {
+  addTaskInput.addEventListener("keydown", (e) => {
     if (e.keyCode == 13) addItem();
   });
 
@@ -121,7 +121,7 @@
       `#task${indexOfCard} + .card-expansion input`
     );
 
-    inputs.forEach(input => (input.value = ""));
+    inputs.forEach((input) => (input.value = ""));
     document.querySelector(
       `#task${indexOfCard} + .card-expansion textarea`
     ).value = "";
@@ -151,8 +151,8 @@
       .sort((a, b) => !a.favorite - !b.favorite);
 
     let tasks = [];
-    let tasksInProgress = data.filter(item => item.completed == false);
-    let tasksCompleted = data.filter(item => item.completed == true);
+    let tasksInProgress = data.filter((item) => item.completed == false);
+    let tasksCompleted = data.filter((item) => item.completed == true);
     if (links[1].classList.contains("active")) {
       tasks = tasksInProgress;
     } else if (links[2].classList.contains("active")) {
@@ -205,9 +205,9 @@
               <i class="fas fa-plus icon"></i>
             </label>
             <input type="file" name="file">
-            <label for="" class="message-label">
-              <i class="far fa-comment-dots icon mr-s"></i>
-              message
+            <label class="message-label">
+              <i class="far fa-comment-dots icon"></i>
+              Message
             </label>
             <textarea name="message" placeholder="Type your memo here…"></textarea>
           </div>
