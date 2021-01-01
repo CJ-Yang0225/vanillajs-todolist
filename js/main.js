@@ -213,11 +213,11 @@
           </div>
           <div class="expansion-footer">
             <button class="btn btn-danger">
-              <i class="fas fa-times icon mr-b"></i>
+              <i class="fas fa-times icon"></i>
               Cancel
             </button>
             <button class="btn btn-primary">
-              <i class="fas fa-plus icon mr-b"></i>
+              <i class="fas fa-plus icon"></i>
               Update
             </button>
           </div>
